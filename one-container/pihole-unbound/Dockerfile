@@ -1,6 +1,6 @@
 ARG PIHOLE_VERSION
 FROM pihole/pihole:${PIHOLE_VERSION:-latest}
-RUN apk update && apk add unbound
+RUN apk update && s6 && apk add unbound
 
 COPY unbound-pihole.conf /etc/unbound/unbound.conf.d/pi-hole.conf
 COPY 99-edns.conf /etc/dnsmasq.d/99-edns.conf
